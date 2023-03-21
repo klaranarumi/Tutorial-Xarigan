@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Como fazer uma apresentação no Xarigan</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Klara" />
+    <meta name="date" content="2021-05-05" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/rladies.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/rladies-fonts.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+    <script src="libs/jquery-1.12.4/jquery.min.js"></script>
+    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding-0.15/datatables.js"></script>
+    <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+    <link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+    <script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+    <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-1.3.1/leaflet.js"></script>
+    <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+    <script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+    <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+    <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: inverse, center, middle
+
+# Como fazer uma apresentação no Xarigan
+
+![](https://media.giphy.com/media/VOPK1BqsMEJRS/giphy.gif)
+## Um pouquinho sobre o pacote em português
+---
+# O que é o Xarigan
+
+
+Segundo é a definição dada pelo próprio pacote:
+
+The R package name **xaringan** was derived&lt;sup&gt;1&lt;/sup&gt; from **Sharingan**, a dōjutsu in the Japanese anime _Naruto_ with two abilities:
+
+- the "Eye of Insight"
+
+- the "Eye of Hypnotism"
+
+I think a presentation is basically a way to communicate insights to the audience, and a great presentation may even "hypnotize" the audience.&lt;sup&gt;2,3&lt;/sup&gt;
+
+.footnote[
+[1] In Chinese, the pronounciation of _X_ is _Sh_ /ʃ/ (as in _shrimp_). Now you should have a better idea of how to pronounce my last name _Xie_.
+
+[2] By comparison, bad presentations only put the audience to sleep.
+
+[3] Personally I find that setting background images for slides is a killer feature of remark.js. It is an effective way to bring visual impact into your presentations.
+]
+---
+# Por que eu fiz este trabalho?
+
+  Após a necessidade de precisar elaborar uma apresentação no próprio RStudio eu tive a oportunidade de conhecer o pacote Xarigan, mas precisei de muitos dias para realizar todos os detalhes que eu gostaria de fazer no projeto e a maioria dos documentos que encontrei estavam em outros idiomas.
+
+  Sentindo a necessidade de ter um documento que facilite na criação de apresentações em português que abordasse os diversos detalhes, além de ter percebido as possibilidades que o pacote permitia facilitar as apresentações foi criado este documento com intuito de compartilhar os conhecimentos adquiridos.
+---
+# Como criar uma apresentação
+  É necessário realizar o install e library do pacote Xarigan. Após isso, você consegue criar uma nova apresentação pelas seguintes etapas: `File -&gt; New File -&gt; R Markdown -&gt; From Template -&gt; Ninja Presentation`
+
+# Primeiros conhecimentos
+  Para criar um novo slide, deve usar `---` e que ele possui um limite de conteúdo para colocar dentro dele, por isso use sempre o `Knit` para certificar de como está a sua apresentação.
+  O Xarigan permite fazer várias modificações para personalizar sua apresentação, por meio do YAML:
+```
+title: "A Cool Presentation"
+output:
+  xaringan::moon_reader:
+    yolo: true
+    nature:
+      autoplay: 30000
+```
+  Além disso, no começo do slide você pode usar o class para fazer algumas alterações.
+```
+  class:inverse,center,middle 
+```
+---
+# Definição de um tema para os slides
+
+## Criação de um tema
+  Você pode escolher as cores e as fontes que tiver interesse para cada um dos slides, definindo as paletas de cores e com a possibilidade de modificar diversos detalhes, pelo pacote xariganthemer. Para realizar esse processo personalizado segue um tutorial que ensina:
+  https://cran.r-project.org/web/packages/xaringanthemer/vignettes/xaringanthemer.html
+  
+  Observação: Este documento está em inglês, não realizei outro porque acredito que, nesse momento, não tenho nada a complementar o trabalho e achei ele muito informativo.
+---
+## Temas de CSS prontos
+  Caso você opte por não fazer um tema do zero, ainda tem como personalizar o seu trabalho e deixar ele colorido, por meio de alguns temas e fontes já prontos que podem ser utilizados no seu projeto.
+
+```r
+names(xaringan:::list_css())
+```
+
+```
+##  [1] "chocolate-fonts"  "chocolate"        "default-fonts"    "default"         
+##  [5] "duke-blue"        "fc-fonts"         "fc"               "hygge-duke"      
+##  [9] "hygge"            "ki-fonts"         "ki"               "kunoichi"        
+## [13] "lucy-fonts"       "lucy"             "metropolis-fonts" "metropolis"      
+## [17] "middlebury-fonts" "middlebury"       "nhsr-fonts"       "nhsr"            
+## [21] "ninjutsu"         "rladies-fonts"    "rladies"          "robot-fonts"     
+## [25] "robot"            "rutgers-fonts"    "rutgers"          "shinobi"         
+## [29] "tamu-fonts"       "tamu"             "uio-fonts"        "uio"             
+## [33] "uo-fonts"         "uo"               "uol-fonts"        "uol"             
+## [37] "useR-fonts"       "useR"
+```
+Observação: pode usar tema e fonte diferentes, pode optar pela mesma mas não necessariamente precisando ser.
+```
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+    css: [default, rladies, rladies-fonts]
+```
+---
+# Vamos personalizar um pouco mais
+  Um dos beneficios de fazer apresentações no RStudio é poder compartilhar os códigos. Logo, existe a capacidade de mudar a estética dos chucks-os retangulos com os códigos. O RMarkdown padrão tem o estilo do github, para fazer alterações, você deve modificar na parte do
+highlightStyle, no Yaml. 
+```
+output:
+  xaringan::moon_reader:
+    nature:
+      highlightStyle: github
+```
+  As opções do higlighStyle, de acordo com o https://arm.rbind.io/slides/xaringan.html#77, são: 
+arta, ascetic, dark, default, far, github, googlecode, idea, ir-black, magula, monokai, rainbow, solarized-dark, solarized-light, sunburst, tomorrow, tomorrow-night-blue, tomorrow-night-bright, tomorrow-night, tomorrow-night-eighties, vs, zenburn.
+---
+class: inverse
+
+# Sim, eu ainda posso fazer mais alterações
+
+## O slide agora é roxo e não branco
+Eu consigo fazer esse plano de fundo mudar igual a capa, através do comando na primeira linha após a criação de slide
+`class: inverse`
+
+## Por que a sua capa não é padrão?
+No meu documento R está presente titulo, subtitulo, autor, instituto e data, que auxilia na minha organização pessoal, mas eu não quero apresentar elas, então como eu faço, eu uso o 
+```
+xaringan::moon_reader:
+    seal: false
+```
+
+Assim permite que eu possa fazer uma capa personalizada para o meu trabalho e continuar com as informações padrões.
+
+---
+## Eu também posso colocar de plano de fundo do slide uma imagem
+
+No ínicio do slide deve conter o seguinte comando:
+```
+background-image: url()
+background-size: 
+background-position:
+```
+
+### background-image:
+Você pode utilizar uma imagem que está dentro do seu computador - url(img/foto_dentro_do_pc.jpg), pode ser , por exemplo, jpg e png, ou que está na internet - url(link). 
+  
+### background-size:
+As opções são cover e contain, ou por números, como 30%, 10%.
+---
+### background-position:
+Pode ser left, center, right, top, middle e bottom, ou por números como 50% 50%, 0% 100% e 100% 0%.
+
+## Outra forma de colocar uma imagem no plano de fundo do slide
+```
+o class: center, bottom
+background-image:
+```
+---
+## Como adicionar imagens no texto do slide
+
+### Forma 1
+É posível fazer com o `background-image:`
+### Forma 2
+`![Descrição da imagem](lugar_ou_link.png)`
+### Forma 3
+Dentro do chuck você pode alterar o tamanho e a localização da imagem.
+
+```r
+knitr::include_graphics('https://imgbin.com/png/Qcb8Ern9/rstudio-data-analysis-data-science-computer-software-png')
+```
+
+![](https://imgbin.com/png/Qcb8Ern9/rstudio-data-analysis-data-science-computer-software-png)&lt;!-- --&gt;
+---
+## Ou usando HTML
+
+### Forma 4
+Feito com o HTML, podendo alterar o tamanho também.
+
+`&lt;img src="localizacao_da_imagem.png"  /&gt;`
+---
+# Como posicionar o texto do slide
+
+## Class
+Você pode alinhar todos os elementos dentro do slide tanto horizontalmente quanto verticalmente.
+
+## Alterar todos os elementos
+
+Alinhamento Horizontal: left, center e right 
+
+Alinhamento Vertical: top, middle e bottom
+---
+## Alterar partes especificas do texto
+### É possível incluir tanto texto quanto imagen
+```
+.right[ ]
+.center[]
+.left[]
+```
+### Ou separar o slide em duas colunas
+```
+.pull-left[ ] 
+.pull-right[ ]
+```
+### Outra forma de dividir o texto
+```
+.right-column[]
+.left-columnt[]
+```
+### É possivel fazer pelo html também
+
+`&lt;p style="text-align: *posicao*"&gt; &lt;/p&gt;`
+---
+# Tamanho das palavras/frases no texto
+```
+# Título Muito Grande
+## Título Grande
+### Título Médio Grande
+#### Título Médio Pequeno
+##### Título Pequeno
+###### Título Muito Pequeno
+```
+É possível fazer isso por HTML também, para modificar altere o número do `font size`.
+
+`&lt;center&gt;&lt;font size="5"&gt; Frase com fonte maior &lt;/font&gt;&lt;/center&gt;`
+
+# Posição do título  
+class: center, middle, inverse, title-slide
+
+titleSlideClass: ["left", "middle", "inverse"]
+---
+# Detalhes das palavras/frases do texto
+
+*frase em itálico* ou _frase em itálico_
+
+**frase em negrito** ou __frase em negrito__
+
+~~frase tachada~~
+
+palavra^sobrescrita^
+```
+.footnote[
+[1] Rodapé número 1
+]
+```
+Para fazer parágrafo, deve ter um espaço, igual o exemplo abaixo:
+````
+Paragráfo 1
+
+Paragráfo 2
+````
+---
+# Mais alguns detalhes das palavras/frases do texto
+
+## Listas
+1. Tópico 1
+  - Tópico 1.1
+  - Tópico 1.2 sem ordem
+2. Tópico 2
+
+## Latex - Fórmulas de matemática
+
+Fórmula isolada
+`$\frac{1}X_i$`
+
+Fórmula no ` `$$\frac{1}X_i$$` ` meio do texto
+---
+## Extra
+- Emojis
+
+
+```r
+devtools::install_github("hadley/emo")
+emo::ji("sparkles")
+```
+
+```
+## ✨
+```
+
+Para auxiliar a procura de emojins utilize o pacote:
+`devtools::install_github("gadenbuie/ermoji")`
+
+- Tweets
+```
+    nature:
+      beforeInit:"https://platform.twitter.com/widgets.js"
+```
+Para selecionar o twitter,copie o código do "Incorporar esse tweet". 
+    
+By https://beatrizmilz.github.io/IME-27-08-2019/#42
+---
+
+- Cor 
+
+`&lt;p style="color: black"&gt;&lt;/p&gt;`
+
+- Fonte
+
+`&lt;p style="font-family:New York serif"&gt;&lt;/p&gt;`
+
+- Link
+
+`[Google](https://www.google.com.br).`
+
+- Gifs 
+
+`![](link.gif)`
+
+- Vídeos
+
+Entre no link do vídeo, clique em compartilhar e incorporar, pegue o código do HTML e  insira no `![]()`
+
+Observação: No meu computador não funcionou mas realizei uma pesquisa, inclusive no https://bookdown.org/yihui/rmarkdown/learnr-videos.html informa como realizar.
+---
+# Destacar as linhas do código
+
+## highlightLines
+```
+yaml
+    output:
+      xaringan::moon_reader:
+        nature:
+          highlightLines: true
+```
+As opções para marcar a linha são `*`, `{{ }}` e `#&lt;&lt;`. Exemplo:
+
+```
+{r}
+Selecionar a linha do código #&lt;&lt;
+```
+## highlight.output
+
+Para destacar linhas da saída do código é possível com o TRUE ou selecionar partes específicas.
+
+Exemplo:
+```
+{r, highlight.output=c(1, 3)}
+```
+---
+# Como fazer os elementos do texto no slide aparecerem depois
+
+O uso do `--` permite que seja possível surgir com outros elementos no mesmo slide
+
+--
+## BUUUUU
+--
+
+### Surpresa!!!
+```
+--
+## BUUUUU
+--
+
+### Surpresa!!!
+```
+--
+
+## Extra
+Personalizar o passar dos slides por animações
+https://www.garrickadenbuie.com/blog/animate-xaringan-slide-transitions/
+---
+# R Code
+
+As chucks funcionam da mesma forma que as outras em R Markdown, você pode optar por não soltar o resultado nem as mensagens.
+
+```r
+a = 2
+b = 3
+a+b
+```
+
+```
+## [1] 5
+```
+
+Para apresentar o código tem duas formas de fazer, entre duas crases para colocar o texto na mesma linha ou para códigos grandes usar no início e no final três crases seguidas.
+---
+# Tables
+Dois pacotes de tabelas famosos no R são o DT e o Knitr
+
+
+```r
+DT::datatable(head(iris, 5))
+```
+
+<div id="htmlwidget-f5479c4e457ac8e9b8c6" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f5479c4e457ac8e9b8c6">{"x":{"filter":"none","data":[["1","2","3","4","5"],[5.1,4.9,4.7,4.6,5],[3.5,3,3.2,3.1,3.6],[1.4,1.4,1.3,1.5,1.4],[0.2,0.2,0.2,0.2,0.2],["setosa","setosa","setosa","setosa","setosa"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+
+
+---
+# R Plots
+
+```r
+plot(iris, col = 'pink')
+```
+
+&lt;img src="Rladies---Xarigan_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+
+Para fazer uma apresentação de plot diferente: 
+https://arm.rbind.io/slides/xaringan.html#90
+
+É possível realizar gráficos com o comando `plot`, mas também pode ser feito no pacote ggplot2 que é excelente.
+---
+# R Mapas
+
+```r
+library(leaflet)
+leaflet() %&gt;% addTiles() %&gt;% setView(-43.9542,-19.8157, zoom = 20)
+```
+
+<div id="htmlwidget-a0b0e3c7570593814723" style="width:504px;height:288px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a0b0e3c7570593814723">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[-19.8157,-43.9542],20,[]]},"evals":[],"jsHooks":[]}</script>
+---
+# Dicas de apresentação
+
+## Autoplay
+É possível passar os slides de acordo com um tempo estabelecido pela yaml.
+    ```yaml
+    output:
+      xaringan::moon_reader:
+        nature:
+          autoplay: 30000
+     ```
+---
+## Loop
+Para reiniciar a reprodução após atingir o último slide, faça essa alteração no yaml.
+    ```yaml
+    output:
+      xaringan::moon_reader:
+        nature:
+          autoplay:
+            interval: 30000
+            loop: true
+      ```
+## Countdown timer
+Para adicionar um cronômetro de contagem regressiva para cada página dos slides, modifique no yaml.
+    ```yaml
+    output:
+      xaringan::moon_reader:
+        nature:
+          countdown: 60000
+    ```
+---
+# PDF e apresentação offline
+Eu nunca realizei isso, mas fiquem a vontade para tentar
+
+## PDF
+```
+remotes::install_github('rstudio/pagedown')
+pagedown::chrome_print("index.html")
+```
+
+## Apresentar offline 
+```
+xaringan::summon_remark()
+```
+---
+# Dicas extras 
+Press h or ?
+
+m -&gt; espelho
+
+b -&gt; apagão
+
+f -&gt; modo de tela cheia
+
+c -&gt; clonar apresentação de slides
+
+p -&gt; modo apresentador
+
+t -&gt; reiniciar cronômetro
+
+By https://xaringantutorial.netlify.app/#14
+
+Para auxiliar o responsável pela apresentação é possível realizar comentários que não será mostrado diretamente para quem está assistindo, isso por meio, acrescentar `?` no final do slide.
+---
+# Outras dicas 
+`&lt;hr/&gt;`  para acrescentar uma linha no slide
+`&amp;nbsp;` para dar um espaço entre duas linhas do slide
+`&lt;br&gt;` para ter mais espaço entre os elementos do slide
+---
+# Caso queira aprofundar mais 
+
+Aprenda mais sobre HTML e CSS, estude o remark.js que não foi abordado na apresentação e acesse os links das referências. Além disso, para conhecer mais o pacote use: https://bookdown.org/yihui/rmarkdown/xaringan.html
+
+## Um resumo com várias dicas de rmakrdown
+https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf
+---
+class: inverse
+# Referências
+- https://beatrizmilz.github.io/IME-27-08-2019/#42
+- https://xaringantutorial.netlify.app/#1
+- https://www.kirenz.com/slides/xaringan-demo-slides.html#1
+- https://arm.rbind.io/slides/xaringan.html#1
+- https://bookdown.org/yihui/rmarkdown/xaringan.html
+- https://annakrystalli.me/talks/xaringan/xaringan.html#67
+- https://pet-estatistica.github.io/site/download/posts/postJAYME2.html
+- http://www.leg.ufpr.br/~fernandomayer/palestra/useR-2015/Rmarkdown-rautu.html#cabeçalhos
+
+---
+class: center, middle
+# Muitooooo obrigadaaaaaaaa!!!
+
+![](https://media.giphy.com/media/xIJLgO6rizUJi/giphy.gif)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
